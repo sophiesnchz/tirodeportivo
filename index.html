@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campo de Tiro Deportivo</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background-color: #1f2937;
+      text-align: center;
+      padding: 20px;
+    }
+    header img {
+      max-height: 60px;
+    }
+    nav {
+      background-color: #374151;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      color: #1f2937;
+    }
+    img.full {
+      width: 100%;
+      border-radius: 12px;
+      margin: 15px 0;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    form button {
+      background-color: #2563eb;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .success-message {
+      color: green;
+      margin-top: 10px;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://github.com/sophiesnchz/tirodeportivo/blob/main/ChatGPT%20Image%20May%2023,%202025%20at%2009_25_34%20AM.png?raw=true" alt="Logo Campo de Tiro">
+  </header>
+
+  <nav>
+    <a href="#blog">Blog</a>
+    <a href="#armas">Armas</a>
+    <a href="#seguridad">Seguridad</a>
+    <a href="#ejercicios">Ejercicios</a>
+    <a href="#reserva">Reserva</a>
+  </nav>
+
+  <section id="blog" class="card">
+    <h2>Blog</h2>
+    <p>Bienvenido al blog del campo de tiro. Aquí encontrarás artículos sobre técnicas de puntería, novedades en competencias y entrevistas a expertos del tiro deportivo.</p>
+    <img class="full" src="https://github.com/sophiesnchz/tirodeportivo/blob/main/images-2.jpeg?raw=true" alt="Tiro deportivo imagen 1">
+  </section>
+
+  <section id="armas" class="card">
+    <h2>Información de Armas</h2>
+    <p>Conoce los distintos tipos de armas que se utilizan en el tiro deportivo, sus características, calibres permitidos y mantenimiento adecuado para un uso seguro.</p>
+    <ul>
+      <li>Rifles de aire comprimido</li>
+      <li>Pistolas deportivas</li>
+      <li>Escopetas para tiro al plato</li>
+    </ul>
+  </section>
+
+  <section id="seguridad" class="card">
+    <h2>Normas de Seguridad</h2>
+    <p>En el campo de tiro, la seguridad es la prioridad número uno. Todos los participantes deben cumplir con las siguientes normas:</p>
+    <ul>
+      <li>Siempre mantener el arma apuntando en dirección segura.</li>
+      <li>No poner el dedo en el gatillo hasta estar listos para disparar.</li>
+      <li>Usar protección auditiva y ocular.</li>
+      <li>Seguir instrucciones del instructor en todo momento.</li>
+    </ul>
+  </section>
+
+  <section id="ejercicios" class="card">
+    <h2>Tipos de Ejercicios</h2>
+    <p>Ofrecemos ejercicios diseñados para mejorar la precisión, la velocidad y la concentración en el tiro deportivo:</p>
+    <ul>
+      <li>Disparo estático en blanco fijo</li>
+      <li>Tiro cronometrado por series</li>
+      <li>Simulación de competencia</li>
+      <li>Entrenamiento con blancos móviles</li>
+    </ul>
+    <img class="full" src="https://github.com/sophiesnchz/tirodeportivo/blob/main/images-3.jpeg?raw=true" alt="Tiro deportivo imagen 2">
+  </section>
+
+  <section id="reserva" class="card">
+    <h2>Reserva tu Visita</h2>
+    <form id="reserva-form">
+      <input type="text" name="nombre" placeholder="Nombre completo" required>
+      <input type="tel" name="telefono" placeholder="Teléfono" required>
+      <input type="email" name="correo" placeholder="Correo electrónico" required>
+      <input type="date" name="fecha" required>
+      <input type="time" name="hora" required>
+      <textarea name="comentarios" placeholder="Comentarios adicionales"></textarea>
+      <button type="submit">Reservar</button>
+      <div class="success-message" id="mensaje-reserva"></div>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById('reserva-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      // Aquí deberías colocar la URL de tu Google Apps Script
+      fetch('https://tu-url-de-apps-script.com', {
+        method: 'POST',
+        body: data,
+        mode: 'no-cors'
+      })
+      .then(() => {
+        const msg = document.getElementById('mensaje-reserva');
+        msg.textContent = '👍 ¡Gracias por tu reserva! ⏳ Redirigiendo... 🎯 Nos vemos pronto.';
+        msg.style.display = 'block';
+        form.reset();
+        setTimeout(() => {
+          msg.style.display = 'none';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 5000);
+      });
+    });
+  </script>
+</body>
+</html>
